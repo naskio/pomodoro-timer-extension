@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "short_name": "Pomodoro",
+  "name": "Pomodoro Timer",
+  "version": "0.1.1",
+  "description": "\"Pomodoro Timer\" is a tool that uses the pomodoro technique \"a time management technique\" to help you managing your time better.",
+  "author": "Mehdi Nassim KHODJA",
+  "icons": {
+    "16": "16.png",
+    "48": "48.png",
+    "128": "128.png",
+    "192": "logo192.png"
+  },
+  "permissions": [
+  ],
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "Open the Timer"
+  },
+  "content_security_policy": "script-src 'self' 'sha256-vNaLBSbzJm5Vo6hdZzI9gN1Ltp26j2HBJhELy3Wzamk='; object-src 'self'"
+}

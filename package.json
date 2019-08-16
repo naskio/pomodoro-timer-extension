@@ -1,0 +1,43 @@
+{
+  "name": "pomodoro-timer",
+  "description": "\"Pomodoro Timer\" is a tool that uses the pomodoro technique \"a time management technique\" to help you managing your time better.",
+  "version": "0.1.0",
+  "private": false,
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-icons": "^3.7.0",
+    "react-scripts": "3.1.0",
+    "speak-tts": "^2.0.8",
+    "styled-components": "^4.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {},
+  "author": {
+    "name": "Mehdi Nassim KHODJA",
+    "email": "fm_khodja@esi.dz",
+    "url": "https://devpost.com/MehdiNassim"
+  }
+}
