@@ -19,9 +19,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "hello": "webpack --mode development  --config webpack.config.js --watch",
-    "build": "webpack --mode production --config webpack.config.js -p",
-    "test": "http-server build/"
+    "build": "webpack --mode production --config webpack.config.js -p"
   },
   "eslintConfig": {
     "extends": "react-app"
