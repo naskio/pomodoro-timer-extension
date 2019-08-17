@@ -12,10 +12,17 @@
     "192": "logo192.png"
   },
   "permissions": [
+    "storage"
   ],
   "browser_action": {
-    "default_popup": "index.html",
+    "default_popup": "popup.html",
     "default_title": "Open the Timer"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": true
   },
   "content_security_policy": "script-src 'self' 'sha256-vNaLBSbzJm5Vo6hdZzI9gN1Ltp26j2HBJhELy3Wzamk='; object-src 'self'"
 }

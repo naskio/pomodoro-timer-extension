@@ -5,7 +5,7 @@ import OutlineButton from '../../components/outlineButton';
 import RedButton from '../../components/redButton';
 import TaskInput from '../../components/taskInput';
 import RoundNumber from '../../components/roundNumber';
-import {toMMSS} from "../../utils/formatter";
+import {toMMSS} from "../../../background/utils/formatter";
 import {MdSkipNext, MdPlayArrow, MdPause, MdStop} from 'react-icons/md';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
