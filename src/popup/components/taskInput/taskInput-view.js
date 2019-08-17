@@ -21,7 +21,7 @@ class Component extends React.PureComponent {
             type="text"
             placeholder={'What is Your task ? …'}
             defaultValue={value}
-            onChange={onValueChange}
+            onChange={(event) => onValueChange(event.target.value)}
             autoFocus={true}
             className="col-10 col-md-8 col-lg-6 pt-3 pb-5 pr-3 pl-3"
         />);

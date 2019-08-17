@@ -23,10 +23,10 @@ const mapDispatchToProps = dispatch => ({
         type: DESTROY,
         payload: {}
     }),
-    taskValueChange: (event) => dispatch({
+    taskValueChange: (value) => dispatch({
         type: TASK_CHANGE,
         payload: {
-            event
+            value
         }
     }),
     roundsNumberValueChange: (value) => dispatch({

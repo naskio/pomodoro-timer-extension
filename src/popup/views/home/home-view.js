@@ -60,7 +60,7 @@ class Component extends React.PureComponent {
                 }
                 {
                     step === 1 && <Fragment>
-                        <div className="container mb-5 mt-3">
+                        <div className="container mb-3 mt-2">
                             <TaskInput
                                 value={taskDescription}
                                 onValueChange={taskValueChange}/>
@@ -76,7 +76,7 @@ class Component extends React.PureComponent {
                             value={numberOfRounds}
                             onValueChange={roundsNumberValueChange}
                         />
-                        <div className="mt-3">
+                        <div className="mt-2">
                             <RedButton title='start' icon={MdPlayArrow}
                                        onClick={startOnPress}
                             />
@@ -89,11 +89,11 @@ class Component extends React.PureComponent {
                         {
                             isPaused ?
                                 <div className="d-flex flex-row">
-                                    <div className="mr-2">
+                                    <div className="mr-1">
                                         <OutlineButton title='resume' icon={MdPlayArrow}
                                                        onClick={resumeOnPress}/>
                                     </div>
-                                    <div className="ml-2">
+                                    <div className="ml-1">
                                         <RedButton title='stop' icon={MdStop}
                                                    onClick={stopOnPress}/>
                                     </div>

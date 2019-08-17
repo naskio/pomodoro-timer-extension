@@ -11,5 +11,6 @@ export default {
         title: 'Focus only on 1 task',
         subtitle: '',
         taskDescription: DEFAULT_TASK,
+        id: -1,
     },
 };

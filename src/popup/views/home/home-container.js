@@ -8,11 +8,6 @@ class Component extends React.Component {
         props.initialize();
     }
 
-    componentWillUnmount() {
-        this.props.destroy();
-    }
-
-
     render() {
         const {
             step,

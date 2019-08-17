@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Button = styled.button`
     border-radius: 16px;
-    padding: 8px 8px 8px 24px;
+    padding: 8px 8px 8px 20px;
     background-color: ${theme.COLORS.PRIMARY_DARK};
     :disabled{
       background-color: ${theme.COLORS.DISABLED};

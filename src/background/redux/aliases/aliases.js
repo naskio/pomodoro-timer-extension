@@ -1,9 +1,12 @@
-import Timer from "../../utils/timer";
-import {initTts, speak} from "../../utils/tts";
 import {DEFAULT_BREAK_TIME, DEFAULT_ROUND_TIME} from "../../config/config";
 import {SET_STATE} from "../actionTypes";
 import {DESTROY, INITIALIZE, NEXT, PAUSE, RESUME, ROUNDS_CHANGE, START, STOP, TASK_CHANGE} from "../../../aliasTypes";
 import initialState from "../initialState";
+import {initTts, speak} from "../../utils/tts";
+
+const start = (dispatch, getState) => setInterval(secondAction(dispatch, getState), 1000);
+
+const stop = (id) => id !== -1 && clearInterval(id);
 
 // DONE
 const secondAction = (dispatch, getState) => () => {
@@ -13,7 +16,8 @@ const secondAction = (dispatch, getState) => () => {
         remaining,
         isBreak,
         taskDescription,
-    } = getState();
+        id,
+    } = getState().data;
     const newRemaining = remaining - 1;
     if (newRemaining <= 0) {
         if (isBreak) {
@@ -32,11 +36,14 @@ const secondAction = (dispatch, getState) => () => {
         } else {
             if (roundNumber >= numberOfRounds) {
                 // the end of all rounds
+                stop(id);
                 dispatch({
                     type: SET_STATE,
-                    payload: {remaining: 0, step: 4, title: 'Congratulations!', subtitle: 'You have finished'},
+                    payload: {
+                        remaining: 0, step: 4, title: 'Congratulations!', subtitle: 'You have finished',
+                        id: -1,
+                    },
                 });
-                timer.stop();
                 speak('Congratulations, you have finished');
             } else {
                 // start of a break, end of a round
@@ -60,25 +67,17 @@ const secondAction = (dispatch, getState) => () => {
     }
 };
 
-let timer = null;
-
 // DONE
-const destroy = (originalAction) => {
-    timer.stop();
-    return originalAction;
+const destroy = (originalAction) => (dispatch, getState) => {
+    const {id} = getState().data;
+    stop(id);
+    dispatch(originalAction);
 };
 
 // DONE
-const initialize = () => (dispatch, getState) => {
+const initialize = (originalAction) => {
     initTts();
-    timer = new Timer(1000, secondAction(dispatch, getState));
-    dispatch({
-        type: SET_STATE,
-        payload: {
-            type: SET_STATE,
-            payload: initialState.data,
-        },
-    });
+    return originalAction;
 };
 
 
@@ -86,7 +85,7 @@ const initialize = () => (dispatch, getState) => {
 const taskValueChange = ({payload}) => {
     return {
         type: SET_STATE,
-        payload: {taskDescription: payload.event.target.value},
+        payload: {taskDescription: payload.value},
     };
 };
 
@@ -100,7 +99,7 @@ const roundsNumberValueChange = ({payload}) => {
 
 // DONE
 const nextOnPress = () => (dispatch, getState) => {
-    const {taskDescription} = getState();
+    const {taskDescription} = getState().data;
     if (!taskDescription) {
         dispatch({
                 type: SET_STATE,
@@ -120,47 +119,52 @@ const startOnPress = () => (dispatch, getState) => {
     const {
         roundNumber,
         taskDescription,
-    } = getState();
+    } = getState().data;
+    const newId = start(dispatch, getState);
     dispatch({
         type: SET_STATE,
         payload: {
             step: 3,
             title: `Round ${roundNumber}`,
             subtitle: taskDescription,
+            id: newId,
         },
     });
-    timer.start();
     speak('Start working');
 };
 
-const pauseOnPress = () => {
-    timer.stop();
-    return {
+const pauseOnPress = () => (dispatch, getState) => {
+    const {id} = getState().data;
+    stop(id);
+    dispatch({
         type: SET_STATE,
         payload: {
             isPaused: true,
+            id: -1,
         },
-    };
+    });
 };
 
-const resumeOnPress = () => {
-    timer.start();
-    return {
+const resumeOnPress = () => (dispatch, getState) => {
+    const newId = start(dispatch, getState);
+    dispatch({
         type: SET_STATE,
         payload: {
             isPaused: false,
+            id: newId,
         },
-    };
+    });
 };
 
-const stopOnPress = () => {
-    timer.stop();
-    return {
+const stopOnPress = () => (dispatch, getState) => {
+    const {id} = getState().data;
+    stop(id);
+    dispatch({
         type: SET_STATE,
         payload: initialState.data,
-    };
+        id: -1,
+    });
 };
-
 
 export default {
     [DESTROY]: destroy,
