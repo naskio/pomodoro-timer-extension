@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "short_name": "Pomodoro",
   "name": "Pomodoro Timer",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "\"Pomodoro Timer\" is a tool that uses the pomodoro technique \"a time management technique\" to help you managing your time better.",
   "author": "Mehdi Nassim KHODJA",
   "icons": {

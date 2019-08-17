@@ -26,7 +26,7 @@ const SubTitle = styled.p`
 
 const Counter = styled.p`
     color: ${theme.COLORS.TEXT};  
-    font-size: 96px;
+    font-size: 80px;
     font-weight: ${theme.FONT_WEIGHT.REGULAR};
 `;
 
@@ -76,7 +76,7 @@ class Component extends React.PureComponent {
                             value={numberOfRounds}
                             onValueChange={roundsNumberValueChange}
                         />
-                        <div className="mt-2">
+                        <div>
                             <RedButton title='start' icon={MdPlayArrow}
                                        onClick={startOnPress}
                             />

@@ -14,6 +14,14 @@ export const initTts = () => {
         speech = player;
     }
 };
-export const speak = (message) => speech && speech.speak({
-    text: message,
-});
+export const speak = (message) => {
+    if (!!speech) {
+        chrome.browserAction.setBadgeText({text: "♫"});
+        speech.speak({text: message}).then(
+            () => {
+                chrome.browserAction.setBadgeText({text: ""});
+            });
+        // Play-around then not working
+        setTimeout(() => chrome.browserAction.setBadgeText({text: ""}), 3000)
+    }
+};
